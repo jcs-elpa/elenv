@@ -31,6 +31,10 @@
 
 ;;; Code:
 
+;;
+;; (@* "Operating System" )
+;;
+
 ;;;###autoload
 (defconst elenv-windows (memq system-type '(cygwin windows-nt ms-dos))
   "Microsoft Windows")
@@ -85,6 +89,10 @@
 (defmacro elenv-with-unix (&rest body)
   "Evaluate BODY in Unix."
   (declare (indent 0)) `(when elenv-unix ,@body))
+
+;;
+;; (@* "Graphic" )
+;;
 
 ;;;###autoload
 (defconst elenv-graphic-p (display-graphic-p)
