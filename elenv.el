@@ -86,5 +86,9 @@
   "Evaluate BODY in Unix."
   (declare (indent 0)) `(when elenv-unix ,@body))
 
+;;;###autoload
+(defconst elenv-graphic-p (display-graphic-p)
+  "Return t if graphic mode.")
+
 (provide 'elenv)
 ;;; elenv.el ends here
