@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## 0.1.1 (Unreleased)
 > Released N/A
 
-* N/A
+* Add is graphic flag (916ad3998be7861dfd873bf2367d6804d82792e7)
 
 ## 0.1.0
 > Released Oct 14, 2022
