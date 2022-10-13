@@ -11,6 +11,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * N/A
 
 ## 0.1.0
-> Released Oct 06, 2022
+> Released Oct 14, 2022
 
 * Initial release
