@@ -55,27 +55,33 @@
 (defconst elenv-unix (memq system-type '(aix berkeley-unix hpux usg-unix-v))
   "Unix")
 
+;;;###autoload
 (defmacro elenv-with-os (os &rest body)
   "Evaluate BODY by OS."
   (declare (indent 1))
   `(when (or (eq system-type ,os) (memq system-type ,os)) ,@body))
 
+;;;###autoload
 (defmacro elenv-with-windows (&rest body)
   "Evaluate BODY in Windows."
   (declare (indent 0)) `(when elenv-windows ,@body))
 
+;;;###autoload
 (defmacro elenv-with-macos (&rest body)
   "Evaluate BODY in macOS."
   (declare (indent 0)) `(when elenv-macos ,@body))
 
+;;;###autoload
 (defmacro elenv-with-linux (&rest body)
   "Evaluate BODY in Linux."
   (declare (indent 0)) `(when elenv-linux ,@body))
 
+;;;###autoload
 (defmacro elenv-with-bsd (&rest body)
   "Evaluate BODY in BSD."
   (declare (indent 0)) `(when elenv-bsd ,@body))
 
+;;;###autoload
 (defmacro elenv-with-unix (&rest body)
   "Evaluate BODY in Unix."
   (declare (indent 0)) `(when elenv-unix ,@body))
