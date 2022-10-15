@@ -95,7 +95,7 @@
 ;;
 
 ;;;###autoload
-(defconst elenv-graphic-p (display-graphic-p)
+(defconst elenv-graphic-p (eval (display-graphic-p))
   "Return t if graphic mode.")
 
 (provide 'elenv)
