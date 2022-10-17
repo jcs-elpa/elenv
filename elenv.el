@@ -60,6 +60,15 @@
   "Unix")
 
 ;;;###autoload
+(defconst elenv-system-type
+  (cond (elenv-windows 'dos)
+        (elenv-macos   'mac)
+        (elenv-linux   'unix)
+        (elenv-bsd     'bsd)
+        (t             'unknown))
+  "Store current system type.")
+
+;;;###autoload
 (defmacro elenv-with-os (os &rest body)
   "Evaluate BODY by OS."
   (declare (indent 1))
