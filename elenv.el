@@ -66,7 +66,7 @@
         (elenv-linux   'unix)
         (elenv-bsd     'bsd)
         (t             'unknown))
-  "Store current system type.")
+  "Generic system type.")
 
 ;;;###autoload
 (defmacro elenv-with-os (os &rest body)
