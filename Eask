@@ -7,6 +7,8 @@
 
 (package-file "elenv.el")
 
+(script "test" "echo \"Error: no test specified\" && exit 1")
+
 (source "jcs-elpa")
 (source "melpa")
 
