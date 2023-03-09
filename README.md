@@ -7,6 +7,119 @@
 
 [![CI](https://github.com/jcs-elpa/elenv/actions/workflows/test.yml/badge.svg)](https://github.com/jcs-elpa/elenv/actions/workflows/test.yml)
 
+## 🖥 Usage
+
+### Operating System
+
+#### <v> elenv-windows
+
+```elisp
+(when elenv-windows ...  ; is windows
+```
+
+#### <v> elenv-darwin
+
+```elisp
+(when elenv-darwin ...  ; is darwin
+```
+
+#### <v> elenv-macos
+
+```elisp
+(when elenv-macos ...  ; is macos
+```
+
+#### <v> elenv-linux
+
+```elisp
+(when elenv-linux ...  ; is linux
+```
+
+#### <v> elenv-bsd
+
+```elisp
+(when elenv-bsd ...  ; is bsd
+```
+
+#### <v> elenv-unix
+
+```elisp
+(when elenv-unix ...  ; is unix
+```
+
+#### <v> elenv-elenv-system-type
+
+```elisp
+(cl-case elenv-system-type  ; return current OS in symbol
+  (`windows ...
+```
+
+#### <v> elenv-elenv-system-type
+
+```elisp
+(message "%s" elenv-system-type)  ; return current OS in symbol
+```
+
+#### <m> elenv-with-os
+
+```elisp
+(elenv-with-os 'windows ...  ; accept list
+```
+
+#### <m> elenv-with-windows
+
+```elisp
+(elenv-with-windows ...  ; do stuff in windows
+```
+
+#### <m> elenv-with-macos
+
+```elisp
+(elenv-with-macos ...  ; do stuff in macos
+```
+
+#### <m> elenv-with-linux
+
+```elisp
+(elenv-with-linux ...  ; do stuff in linux
+```
+
+#### <m> elenv-with-bsd
+
+```elisp
+(elenv-with-bsd ...  ; do stuff in bsd
+```
+
+#### <m> elenv-with-unix
+
+```elisp
+(elenv-with-unix ...  ; do stuff in unix
+```
+
+### Graphic
+
+#### <v> elenv-graphic-p
+
+```elisp
+(when elenv-graphic-p ...  ; do stuff in graphic mode
+```
+
+### Environment
+
+#### <v> elenv-with-env
+
+```elisp
+(elenv-with-env "PATH" ...  ; do stuff when VARIABLE exists; expose it as `value'.
+```
+
+### Executable
+
+#### <v> elenv-with-exec
+
+```elisp
+(elenv-with-exec "node" nil ...  ; do stuff when PROGRAM exists; expose it as `value'.
+```
+
 ## Contribute
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
