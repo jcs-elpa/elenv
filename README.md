@@ -7,6 +7,35 @@
 
 [![CI](https://github.com/jcs-elpa/elenv/actions/workflows/test.yml/badge.svg)](https://github.com/jcs-elpa/elenv/actions/workflows/test.yml)
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [elenv](#elenv)
+  - [🔨 Usage](#🔨-usage)
+    - [🖥️ Operating System](#🖥️-operating-system)
+      - [[v] elenv-windows](#v-elenv-windows)
+      - [[v] elenv-darwin](#v-elenv-darwin)
+      - [[v] elenv-macos](#v-elenv-macos)
+      - [[v] elenv-linux](#v-elenv-linux)
+      - [[v] elenv-bsd](#v-elenv-bsd)
+      - [[v] elenv-unix](#v-elenv-unix)
+      - [[v] elenv-elenv-system-type](#v-elenv-elenv-system-type)
+      - [[m] elenv-with-os](#m-elenv-with-os)
+      - [[m] elenv-with-windows](#m-elenv-with-windows)
+      - [[m] elenv-with-macos](#m-elenv-with-macos)
+      - [[m] elenv-with-linux](#m-elenv-with-linux)
+      - [<m> elenv-with-bsd](#m-elenv-with-bsd)
+      - [[m] elenv-with-unix](#m-elenv-with-unix)
+    - [🖼️	Graphic](#🖼️	graphic)
+      - [[v] elenv-graphic-p](#v-elenv-graphic-p)
+    - [⛓️ Environment](#⛓️-environment)
+      - [[m] elenv-with-env](#m-elenv-with-env)
+    - [⚙️ Executable](#⚙️-executable)
+      - [[m] elenv-with-exec](#m-elenv-with-exec)
+  - [Contribute](#contribute)
+
+<!-- markdown-toc end -->
+
 ## 🔨 Usage
 
 ### 🖥️ Operating System
