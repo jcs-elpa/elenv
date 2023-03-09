@@ -7,78 +7,72 @@
 
 [![CI](https://github.com/jcs-elpa/elenv/actions/workflows/test.yml/badge.svg)](https://github.com/jcs-elpa/elenv/actions/workflows/test.yml)
 
-## 🖥 Usage
+## 🔨 Usage
 
-### Operating System
+### 🖥️ Operating System
 
-#### <v> elenv-windows
+#### [v] elenv-windows
 
 ```elisp
 (when elenv-windows ...  ; is windows
 ```
 
-#### <v> elenv-darwin
+#### [v] elenv-darwin
 
 ```elisp
 (when elenv-darwin ...  ; is darwin
 ```
 
-#### <v> elenv-macos
+#### [v] elenv-macos
 
 ```elisp
 (when elenv-macos ...  ; is macos
 ```
 
-#### <v> elenv-linux
+#### [v] elenv-linux
 
 ```elisp
 (when elenv-linux ...  ; is linux
 ```
 
-#### <v> elenv-bsd
+#### [v] elenv-bsd
 
 ```elisp
 (when elenv-bsd ...  ; is bsd
 ```
 
-#### <v> elenv-unix
+#### [v] elenv-unix
 
 ```elisp
 (when elenv-unix ...  ; is unix
 ```
 
-#### <v> elenv-elenv-system-type
+#### [v] elenv-elenv-system-type
 
 ```elisp
 (cl-case elenv-system-type  ; return current OS in symbol
   (`windows ...
 ```
 
-#### <v> elenv-elenv-system-type
-
-```elisp
-(message "%s" elenv-system-type)  ; return current OS in symbol
-```
-
-#### <m> elenv-with-os
+#### [m] elenv-with-os
 
 ```elisp
 (elenv-with-os 'windows ...  ; accept list
 ```
 
-#### <m> elenv-with-windows
+#### [m] elenv-with-windows
 
 ```elisp
 (elenv-with-windows ...  ; do stuff in windows
 ```
 
-#### <m> elenv-with-macos
+#### [m] elenv-with-macos
 
 ```elisp
 (elenv-with-macos ...  ; do stuff in macos
 ```
 
-#### <m> elenv-with-linux
+#### [m] elenv-with-linux
 
 ```elisp
 (elenv-with-linux ...  ; do stuff in linux
@@ -90,31 +84,31 @@
 (elenv-with-bsd ...  ; do stuff in bsd
 ```
 
-#### <m> elenv-with-unix
+#### [m] elenv-with-unix
 
 ```elisp
 (elenv-with-unix ...  ; do stuff in unix
 ```
 
-### Graphic
+### 🖼️	Graphic
 
-#### <v> elenv-graphic-p
+#### [v] elenv-graphic-p
 
 ```elisp
 (when elenv-graphic-p ...  ; do stuff in graphic mode
 ```
 
-### Environment
+### ⛓️ Environment
 
-#### <v> elenv-with-env
+#### [m] elenv-with-env
 
 ```elisp
 (elenv-with-env "PATH" ...  ; do stuff when VARIABLE exists; expose it as `value'.
 ```
 
-### Executable
+### ⚙️ Executable
 
-#### <v> elenv-with-exec
+#### [m] elenv-with-exec
 
 ```elisp
 (elenv-with-exec "node" nil ...  ; do stuff when PROGRAM exists; expose it as `value'.
