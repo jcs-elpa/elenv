@@ -107,5 +107,35 @@
 (defconst elenv-graphic-p (display-graphic-p)
   "Return t if graphic mode.")
 
+;;
+;; (@* "Environment" )
+;;
+
+;;;###autoload
+(defmacro elenv-with-env (variable &rest body)
+  "Evaluate BODY when VARIABLE is valid."
+  (declare (indent 1))
+  `(when-let ((value (getenv ,variable))) ,@body))
+
+;;
+;; (@* "Executable" )
+;;
+
+;;;###autoload
+(defmacro elenv-with-exec (command remote &rest body)
+  "Evaluate BODY when COMMAND is found.
+
+For argument REMOTE, see function `executable-find' description."
+  (declare (indent 2))
+  (let ((var (intern (format "elenv-exec-%s" command))))
+    `(when-let
+         ((value (if (boundp ',var)
+                     (symbol-value ',var)
+                   (defvar ,var (executable-find ,command ,remote)
+                     (format "Variable generate it with `elenv' finding executable `%s'."
+                             ,command))
+                   (symbol-value ',var))))
+       ,@body)))
+
 (provide 'elenv)
 ;;; elenv.el ends here
