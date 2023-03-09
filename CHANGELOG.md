@@ -9,8 +9,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 > Released N/A
 
 * Add is graphic flag (916ad3998be7861dfd873bf2367d6804d82792e7)
-* Add new macro `elenv-with-env` ()
-* Add new macro `elenv-with-exec` ()
+* Add new macro `elenv-with-env` (42571a6e4860b9ea27136e60019487d173ed7fb9)
+* Add new macro `elenv-with-exec` (42571a6e4860b9ea27136e60019487d173ed7fb9)
 
 ## 0.1.0
 > Released Oct 14, 2022
