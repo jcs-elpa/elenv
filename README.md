@@ -25,7 +25,7 @@
     - [[m] elenv-with-linux](#m-elenv-with-linux)
     - [<m> elenv-with-bsd](#m-elenv-with-bsd)
     - [[m] elenv-with-unix](#m-elenv-with-unix)
-  - [🖼️	Graphic](#🖼️	graphic)
+  - [🖼️ Graphic](#🖼️-graphic)
     - [[v] elenv-graphic-p](#v-elenv-graphic-p)
   - [⛓️ Environment](#⛓️-environment)
     - [[m] elenv-with-env](#m-elenv-with-env)
@@ -118,7 +118,7 @@
 (elenv-with-unix ...  ; do stuff in unix
 ```
 
-### 🖼️	Graphic
+### 🖼️ Graphic
 
 #### [v] elenv-graphic-p
 
