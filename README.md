@@ -28,9 +28,13 @@
   - [🖼️ Graphic](#🖼️-graphic)
     - [[v] elenv-graphic-p](#v-elenv-graphic-p)
   - [⛓️ Environment](#⛓️-environment)
-    - [[m] elenv-with-env](#m-elenv-with-env)
+    - [[m] elenv-if-env](#m-elenv-if-env)
+    - [[m] elenv-when-env](#m-elenv-when-env)
+    - [[m] elenv-unless-env](#m-elenv-unless-env)
   - [⚙️ Executable](#⚙️-executable)
-    - [[m] elenv-with-exec](#m-elenv-with-exec)
+    - [[m] elenv-if-exec](#m-elenv-if-exec)
+    - [[m] elenv-when-exec](#m-elenv-when-exec)
+    - [[m] elenv-unless-exec](#m-elenv-unless-exec)
 - [Contribute](#contribute)
 
 <!-- markdown-toc end -->
@@ -128,18 +132,46 @@
 
 ### ⛓️ Environment
 
-#### [m] elenv-with-env
+#### [m] elenv-if-env
 
 ```elisp
-(elenv-with-env "PATH" ...  ; do stuff when VARIABLE exists; expose it as `value'.
+(elenv-if-env "PATH"
+                ...  ; do stuff when VARIABLE exists; expose it as `value'.
+  ...                ; else we execute the ELSE block
+```
+
+#### [m] elenv-when-env
+
+```elisp
+(elenv-when-env "PATH" ...  ; do stuff when VARIABLE exists; expose it as `value'.
+```
+
+#### [m] elenv-unless-env
+
+```elisp
+(elenv-unless-env "PATH" ...  ; do stuff unless VARIABLE exists; expose it as `value'.
 ```
 
 ### ⚙️ Executable
 
-#### [m] elenv-with-exec
+#### [m] elenv-if-exec
 
 ```elisp
-(elenv-with-exec "node" nil ...  ; do stuff when PROGRAM exists; expose it as `value'.
+(elenv-if-exec "node" nil 
+                ...  ; do stuff if PROGRAM exists; expose it as `value'.
+  ...                ; else we execute the ELSE block
+```
+
+#### [m] elenv-when-exec
+
+```elisp
+(elenv-when-exec "node" nil ...  ; do stuff when PROGRAM exists; expose it as `value'.
+```
+
+#### [m] elenv-unless-exec
+
+```elisp
+(elenv-unless-exec "node" nil ...  ; do stuff unless PROGRAM exists; expose it as `value'.
 ```
 
 ## Contribute
