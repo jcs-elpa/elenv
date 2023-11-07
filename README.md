@@ -18,7 +18,7 @@
     - [[v] elenv-linux](#v-elenv-linux)
     - [[v] elenv-bsd](#v-elenv-bsd)
     - [[v] elenv-unix](#v-elenv-unix)
-    - [[v] elenv-elenv-system-type](#v-elenv-elenv-system-type)
+    - [[v] elenv-system-type](#v-elenv-system-type)
     - [[m] elenv-with-os](#m-elenv-with-os)
     - [[m] elenv-with-windows](#m-elenv-with-windows)
     - [[m] elenv-with-macos](#m-elenv-with-macos)
@@ -79,7 +79,7 @@
 (when elenv-unix ...  ; is unix
 ```
 
-#### [v] elenv-elenv-system-type
+#### [v] elenv-system-type
 
 ```elisp
 (cl-case elenv-system-type  ; return current OS in symbol
