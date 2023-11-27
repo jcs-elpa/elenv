@@ -10,32 +10,33 @@
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
-- [🔨 Usage](#🔨-usage)
-  - [🖥️ Operating System](#🖥️-operating-system)
-    - [[v] elenv-windows](#v-elenv-windows)
-    - [[v] elenv-darwin](#v-elenv-darwin)
-    - [[v] elenv-macos](#v-elenv-macos)
-    - [[v] elenv-linux](#v-elenv-linux)
-    - [[v] elenv-bsd](#v-elenv-bsd)
-    - [[v] elenv-unix](#v-elenv-unix)
-    - [[v] elenv-system-type](#v-elenv-system-type)
-    - [[m] elenv-with-os](#m-elenv-with-os)
-    - [[m] elenv-with-windows](#m-elenv-with-windows)
-    - [[m] elenv-with-macos](#m-elenv-with-macos)
-    - [[m] elenv-with-linux](#m-elenv-with-linux)
-    - [<m> elenv-with-bsd](#m-elenv-with-bsd)
-    - [[m] elenv-with-unix](#m-elenv-with-unix)
-  - [🖼️ Graphic](#🖼️-graphic)
-    - [[v] elenv-graphic-p](#v-elenv-graphic-p)
-  - [⛓️ Environment](#⛓️-environment)
-    - [[m] elenv-if-env](#m-elenv-if-env)
-    - [[m] elenv-when-env](#m-elenv-when-env)
-    - [[m] elenv-unless-env](#m-elenv-unless-env)
-  - [⚙️ Executable](#⚙️-executable)
-    - [[m] elenv-if-exec](#m-elenv-if-exec)
-    - [[m] elenv-when-exec](#m-elenv-when-exec)
-    - [[m] elenv-unless-exec](#m-elenv-unless-exec)
-- [Contribute](#contribute)
+- [elenv](#elenv)
+  - [🔨 Usage](#🔨-usage)
+    - [🖥️ Operating System](#🖥️-operating-system)
+      - [[v] elenv-windows](#v-elenv-windows)
+      - [[v] elenv-darwin](#v-elenv-darwin)
+      - [[v] elenv-macos](#v-elenv-macos)
+      - [[v] elenv-linux](#v-elenv-linux)
+      - [[v] elenv-bsd](#v-elenv-bsd)
+      - [[v] elenv-unix](#v-elenv-unix)
+      - [[v] elenv-system-type](#v-elenv-system-type)
+      - [[m] elenv-with-os](#m-elenv-with-os)
+      - [[m] elenv-with-windows](#m-elenv-with-windows)
+      - [[m] elenv-with-macos](#m-elenv-with-macos)
+      - [[m] elenv-with-linux](#m-elenv-with-linux)
+      - [[m] elenv-with-bsd](#m-elenv-with-bsd)
+      - [[m] elenv-with-unix](#m-elenv-with-unix)
+    - [🖼️ Graphic](#🖼️-graphic)
+      - [[v] elenv-graphic-p](#v-elenv-graphic-p)
+    - [⛓️ Environment](#⛓️-environment)
+      - [[m] elenv-if-env](#m-elenv-if-env)
+      - [[m] elenv-when-env](#m-elenv-when-env)
+      - [[m] elenv-unless-env](#m-elenv-unless-env)
+    - [⚙️ Executable](#⚙️-executable)
+      - [[m] elenv-if-exec](#m-elenv-if-exec)
+      - [[m] elenv-when-exec](#m-elenv-when-exec)
+      - [[m] elenv-unless-exec](#m-elenv-unless-exec)
+  - [Contribute](#contribute)
 
 <!-- markdown-toc end -->
 
@@ -110,7 +111,7 @@
 (elenv-with-linux ...  ; do stuff in linux
 ```
 
-#### <m> elenv-with-bsd
+#### [m] elenv-with-bsd
 
 ```elisp
 (elenv-with-bsd ...  ; do stuff in bsd
