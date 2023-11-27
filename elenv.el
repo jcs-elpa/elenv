@@ -1,4 +1,4 @@
-;;; elenv.el --- Emacs Lisp environment  -*- lexical-binding: t; -*-
+;;; elenv.el --- Environment variable management  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2022-2023  Shen, Jen-Chieh
 
@@ -6,7 +6,7 @@
 ;; Maintainer: Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; URL: https://github.com/jcs-elpa/elenv
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "26."))
+;; Package-Requires: ((emacs "26.1"))
 ;; Keywords: maint
 
 ;; This file is not part of GNU Emacs.
@@ -26,7 +26,9 @@
 
 ;;; Commentary:
 ;;
-;; Emacs Lisp environment
+;; The package name `elenv' stands for Emacs Lisp environment.
+;;
+;; Environment variable management.
 ;;
 
 ;;; Code:
@@ -37,27 +39,27 @@
 
 ;;;###autoload
 (defconst elenv-windows (memq system-type '(cygwin windows-nt ms-dos))
-  "Microsoft Windows")
+  "The operating system is Microsoft Windows compatible.")
 
 ;;;###autoload
 (defconst elenv-darwin (eq system-type 'darwin)
-  "GNU-Darwin, macOS")
+  "The operating system is GNU-Darwin compatible.")
 
 ;;;###autoload
 (defconst elenv-macos elenv-darwin
-  "macOS")
+  "The operating system is macOS compatible.")
 
 ;;;###autoload
 (defconst elenv-linux (eq system-type 'gnu/linux)
-  "Linux")
+  "The operating system is Linux compatible.")
 
 ;;;###autoload
 (defconst elenv-bsd (eq system-type 'gnu/kfreebsd)
-  "BSD")
+  "The operating system is BSD compatible.")
 
 ;;;###autoload
 (defconst elenv-unix (memq system-type '(aix berkeley-unix hpux usg-unix-v))
-  "Unix")
+  "The operating system is Unix compatible.")
 
 ;;;###autoload
 (defconst elenv-system-type
@@ -147,7 +149,7 @@ For argument REMOTE, see function `executable-find' description."
 
 ;;;###autoload
 (defmacro elenv-if-exec (command remote then &rest else)
-  "Evaluate BODY if COMMAND is found.
+  "Evaluate body (THEN and ELSE) if COMMAND is found.
 
 For argument REMOTE, see function `executable-find' description."
   (declare (indent 3))
