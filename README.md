@@ -28,8 +28,6 @@ The package name `elenv' stands for Emacs Lisp environment.
       - [[m] elenv-with-linux](#m-elenv-with-linux)
       - [[m] elenv-with-bsd](#m-elenv-with-bsd)
       - [[m] elenv-with-unix](#m-elenv-with-unix)
-    - [🖼️ Graphic](#🖼️-graphic)
-      - [[v] elenv-graphic-p](#v-elenv-graphic-p)
     - [⛓️ Environment](#⛓️-environment)
       - [[m] elenv-if-env](#m-elenv-if-env)
       - [[m] elenv-when-env](#m-elenv-when-env)
@@ -38,6 +36,10 @@ The package name `elenv' stands for Emacs Lisp environment.
       - [[m] elenv-if-exec](#m-elenv-if-exec)
       - [[m] elenv-when-exec](#m-elenv-when-exec)
       - [[m] elenv-unless-exec](#m-elenv-unless-exec)
+    - [🖼️ Graphic](#🖼️-graphic)
+      - [[v] elenv-graphic-p](#v-elenv-graphic-p)
+    - [🔍 Debugging](#🔍-debugging)
+      - [[f] elenv-debugging-p](#f-elenv-debugging-p)
   - [Contribute](#contribute)
 
 <!-- markdown-toc end -->
@@ -125,14 +127,6 @@ The package name `elenv' stands for Emacs Lisp environment.
 (elenv-with-unix ...  ; do stuff in unix
 ```
 
-### 🖼️ Graphic
-
-#### [v] elenv-graphic-p
-
-```elisp
-(when elenv-graphic-p ...  ; do stuff in graphic mode
-```
-
 ### ⛓️ Environment
 
 #### [m] elenv-if-env
@@ -175,6 +169,22 @@ The package name `elenv' stands for Emacs Lisp environment.
 
 ```elisp
 (elenv-unless-exec "node" nil ...  ; do stuff unless PROGRAM exists; expose it as `value'.
+```
+
+### 🖼️ Graphic
+
+#### [v] elenv-graphic-p
+
+```elisp
+(when elenv-graphic-p ...  ; do stuff in graphic mode
+```
+
+### 🔍 Debugging
+
+#### [f] elenv-debugging-p
+
+```elisp
+(when (elenv-debugging-p) ...  ; do stuff in debug mode
 ```
 
 ## Contribute

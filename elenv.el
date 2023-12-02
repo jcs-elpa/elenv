@@ -102,14 +102,6 @@
   (declare (indent 0)) `(when elenv-unix ,@body))
 
 ;;
-;; (@* "Graphic" )
-;;
-
-;;;###autoload
-(defconst elenv-graphic-p (display-graphic-p)
-  "Return t if graphic mode.")
-
-;;
 ;; (@* "Environment" )
 ;;
 
@@ -174,6 +166,23 @@ For argument REMOTE, see function `executable-find' description."
   (declare (indent 2))
   `(unless (elenv--exec-find ,command ,remote)
      ,@body))
+
+;;
+;; (@* "Graphic" )
+;;
+
+;;;###autoload
+(defconst elenv-graphic-p (display-graphic-p)
+  "Return t if graphic mode.")
+
+;;
+;; (@* "Debugging" )
+;;
+
+;;;###autoload
+(defun elenv-debugging-p ()
+  "Return non-nil when debugging."
+  (bound-and-true-p edebug-active))
 
 (provide 'elenv)
 ;;; elenv.el ends here
