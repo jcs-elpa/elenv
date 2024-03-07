@@ -176,6 +176,14 @@ For argument REMOTE, see function `executable-find' description."
   "Return t if graphic mode.")
 
 ;;
+;; (@* "Daemon" )
+;;
+
+;;;###autoload
+(defconst elenv-daemon-p (daemonp)
+  "Return t if daemon mode.")
+
+;;
 ;; (@* "Debugging" )
 ;;
 
