@@ -131,7 +131,7 @@
   "Find executable COMMAND.
 
 For argument REMOTE, see function `executable-find' description."
-  (let ((var (intern (format "elenv-exec-%s" command))))
+  (let ((var (intern (format "elenv-exec-%s%s" command (if remote "-remote" "")))))
     `(if (boundp ',var)
          (symbol-value ',var)
        (defvar ,var (executable-find ,command ,remote)
