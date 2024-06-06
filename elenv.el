@@ -202,5 +202,25 @@ For argument REMOTE, see function `executable-find' description."
   "Return non-nil when debugging."
   (bound-and-true-p edebug-active))
 
+;;
+;; (@* "Display" )
+;;
+
+;;;###autoload
+(defmacro elenv-with-no-redisplay (&rest body)
+  "Execute BODY without any redisplay execution."
+  (declare (indent 0) (debug t))
+  `(let ((inhibit-redisplay t)
+         (inhibit-modification-hooks t)
+         (inhibit-point-motion-hooks t)
+         after-focus-change-function
+         buffer-list-update-hook
+         display-buffer-alist
+         window-configuration-change-hook
+         window-scroll-functions
+         window-size-change-functions
+         window-state-change-hook)
+     ,@body))
+
 (provide 'elenv)
 ;;; elenv.el ends here
