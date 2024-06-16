@@ -212,7 +212,6 @@ For argument REMOTE, see function `executable-find' description."
   (declare (indent 0) (debug t))
   `(let ((inhibit-redisplay t)
          (inhibit-modification-hooks t)
-         (inhibit-point-motion-hooks t)
          after-focus-change-function
          buffer-list-update-hook
          display-buffer-alist
