@@ -186,14 +186,14 @@ For argument REMOTE, see function `executable-find' description."
   (nth 4 (assq 'geometry (frame-monitor-attributes frame))))
 
 ;;;###autoload
-(defun elenv-display-vertical-p ()
+(defun elenv-monitor-vertical-p ()
   "Return non-nil if currently on a vertical display."
   (< (elenv-monitor-pixel-width) (elenv-monitor-pixel-height)))
 
 ;;;###autoload
-(defun elenv-display-horizontal-p ()
+(defun elenv-monitor-horizontal-p ()
   "Return non-nil if currently on a horizontal display."
-  (not (elenv-display-vertical-p)))
+  (not (elenv-monitor-vertical-p)))
 
 ;;
 ;; (@* "Daemon" )
