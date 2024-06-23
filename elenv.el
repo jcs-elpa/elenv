@@ -177,12 +177,12 @@ For argument REMOTE, see function `executable-find' description."
 
 ;;;###autoload
 (defun elenv-monitor-pixel-width (&optional frame)
-  "Return the physical monitor pixel width."
+  "Return the pixel width from physical monitor by FRAME."
   (nth 3 (assq 'geometry (frame-monitor-attributes frame))))
 
 ;;;###autoload
 (defun elenv-monitor-pixel-height (&optional frame)
-  "Return the physical monitor pixel height."
+  "Return the pixel height from physical monitor by FRAME."
   (nth 4 (assq 'geometry (frame-monitor-attributes frame))))
 
 ;;;###autoload
