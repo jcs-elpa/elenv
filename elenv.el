@@ -176,9 +176,19 @@ For argument REMOTE, see function `executable-find' description."
   "Return t if graphic mode.")
 
 ;;;###autoload
+(defun elenv-monitor-pixel-width (&optional frame)
+  "Return the physical monitor pixel width."
+  (nth 3 (assq 'geometry (frame-monitor-attributes frame))))
+
+;;;###autoload
+(defun elenv-monitor-pixel-height (&optional frame)
+  "Return the physical monitor pixel height."
+  (nth 4 (assq 'geometry (frame-monitor-attributes frame))))
+
+;;;###autoload
 (defun elenv-display-vertical-p ()
   "Return non-nil if currently on a vertical display."
-  (< (display-pixel-width) (display-pixel-height)))
+  (< (elenv-monitor-pixel-width) (elenv-monitor-pixel-height)))
 
 ;;;###autoload
 (defun elenv-display-horizontal-p ()
