@@ -6,7 +6,7 @@
 ;; Maintainer: Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; URL: https://github.com/jcs-elpa/elenv
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "26.1"))
+;; Package-Requires: ((emacs "26.1") (list-utils "0.4.6"))
 ;; Keywords: maint
 
 ;; This file is not part of GNU Emacs.
@@ -34,8 +34,7 @@
 ;;; Code:
 
 ;;
-;; (@* "Operating System" )
-;;
+;;; OS
 
 ;;;###autoload
 (defconst elenv-windows (memq system-type '(cygwin windows-nt ms-dos))
@@ -102,8 +101,7 @@
   (declare (indent 0)) `(when elenv-unix ,@body))
 
 ;;
-;; (@* "Environment" )
-;;
+;;; Environment
 
 ;;;###autoload
 (defmacro elenv-if-env (variable then &rest else)
@@ -124,8 +122,7 @@
   `(unless (getenv ,variable) ,@body))
 
 ;;
-;; (@* "Executable" )
-;;
+;;; Executable
 
 (defmacro elenv--exec-find (command remote)
   "Find executable COMMAND.
@@ -168,8 +165,7 @@ For argument REMOTE, see function `executable-find' description."
      ,@body))
 
 ;;
-;; (@* "Graphic" )
-;;
+;;; Graphic
 
 ;;;###autoload
 (defconst elenv-graphic-p (display-graphic-p)
@@ -196,16 +192,14 @@ For argument REMOTE, see function `executable-find' description."
   (not (elenv-monitor-vertical-p)))
 
 ;;
-;; (@* "Daemon" )
-;;
+;;; Daemon
 
 ;;;###autoload
 (defconst elenv-daemon-p (daemonp)
   "Return t if daemon mode.")
 
 ;;
-;; (@* "Debugging" )
-;;
+;;; Debugging
 
 ;;;###autoload
 (defun elenv-debugging-p ()
@@ -213,8 +207,7 @@ For argument REMOTE, see function `executable-find' description."
   (bound-and-true-p edebug-active))
 
 ;;
-;; (@* "Display" )
-;;
+;;; Display
 
 ;;;###autoload
 (defmacro elenv-with-no-redisplay (&rest body)
@@ -230,6 +223,129 @@ For argument REMOTE, see function `executable-find' description."
          window-size-change-functions
          window-state-change-hook)
      ,@body))
+
+;;
+;;; Color
+
+(defun elenv-light-color-p (hex-code)
+  "Return non-nil if HEX-CODE is in light tone."
+  (when elenv-graphic-p
+    (let ((gray (nth 0 (color-values "gray")))
+          (color (nth 0 (color-values hex-code))))
+      (< gray color))))
+
+;;
+;;; List
+
+;;;###autoload
+(defmacro elenv-push (newelt seq)
+  "Push NEWELT to the ahead or back of SEQ."
+  `(if (zerop (length ,seq))
+       (push ,newelt ,seq)
+     (list-utils-insert-after-pos ,seq (max (1- (length ,seq)) 0) ,newelt)))
+
+;;
+;;; Buffer
+
+;;;###autoload
+(defun elenv-buffer-use-spaces-p ()
+  "Return t if the buffer use spaces instead of tabs."
+  (= (how-many "^\t" (point-min) (point-max)) 0))
+
+;;;###autoload
+(defun elenv-buffer-name-or-file-name (&optional buf)
+  "Return BUF's function `buffer-file-name' or `buffer-name' respectively."
+  (or (buffer-file-name buf) (buffer-name buf)))
+
+;;
+;;; String
+
+;;;###autoload
+(defun elenv-2str (obj)
+  "Convert OBJ to string."
+  (format "%s" obj))
+
+;;
+;;; Frame
+
+;;;###autoload
+(defun elenv-frame-util-p (&optional frame)
+  "Return non-nil if FRAME is an utility frame."
+  (frame-parent (or frame (selected-frame))))
+
+;;
+;;; Window
+
+;;;###autoload
+(defun elenv-goto-line (ln)
+  "Goto LN line number."
+  (goto-char (point-min)) (forward-line (1- ln)))
+
+;;;###autoload
+(defmacro elenv-save-excursion (&rest body)
+  "Re-implementation `save-excursion' in BODY."
+  (declare (indent 0) (debug t))
+  `(let ((ln (line-number-at-pos nil t))
+         (col (current-column)))
+     ,@body
+     (elenv-goto-line ln)
+     (move-to-column col)))
+
+;;
+;;; Restore Windows Status
+
+;;;###autoload
+(defun elenv-walk-windows (fun &optional minibuf all-frames)
+  "See function `walk-windows' description for arguments FUN, MINIBUF and
+ALL-FRAMES."
+  (elenv-with-no-redisplay
+    (walk-windows
+     (lambda (win)
+       (unless (elenv-frame-util-p (window-frame win))
+         (with-selected-window win (funcall fun))))
+     minibuf all-frames)))
+
+(defvar elenv-window--record-buffer-names nil "Record all windows' buffer.")
+(defvar elenv-window--record-points nil "Record all windows point.")
+(defvar elenv-window--record-wstarts nil "Record all windows starting points.")
+
+(defun elenv-window-record-once ()
+  "Record windows status once."
+  (let ((buf-names nil) (pts nil) (wstarts nil))
+    ;; Record down all the window information with the same buffer opened.
+    (elenv-walk-windows
+     (lambda ()
+       (elenv-push (elenv-buffer-name-or-file-name) buf-names)  ; Record as string!
+       (elenv-push (point) pts)
+       (elenv-push (window-start) wstarts)))
+    (push buf-names elenv-window--record-buffer-names)
+    (push pts       elenv-window--record-points)
+    (push wstarts   elenv-window--record-wstarts)))
+
+(defun elenv-window-restore-once ()
+  "Restore windows status once."
+  (let ((buf-names (pop elenv-window--record-buffer-names))
+        (pts       (pop elenv-window--record-points))
+        (wstarts   (pop elenv-window--record-wstarts))
+        (win-cnt   0))
+    ;; Restore the window information after, including opening the same buffer.
+    (elenv-walk-windows
+     (lambda ()
+       (let* ((buf-name (nth win-cnt buf-names))
+              (current-pt (nth win-cnt pts))
+              (current-wstart (nth win-cnt wstarts))
+              (actual-buf (or (get-buffer buf-name)
+                              (get-file-buffer buf-name))))
+         (if actual-buf (switch-to-buffer actual-buf) (find-file buf-name))
+         (set-window-start nil current-wstart)
+         (goto-char current-pt)
+         (cl-incf win-cnt))))))
+
+;;;###autoload
+(defmacro elenv-save-window-excursion (&rest body)
+  "Execute BODY without touching window's layout/settings."
+  (declare (indent 0) (debug t))
+  `(elenv-with-no-redisplay (elenv-window-record-once) ,@body (elenv-window-restore-once)))
 
 (provide 'elenv)
 ;;; elenv.el ends here
