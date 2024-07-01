@@ -6,7 +6,7 @@
 ;; Maintainer: Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; URL: https://github.com/jcs-elpa/elenv
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "26.1") (list-utils "0.4.6"))
+;; Package-Requires: ((emacs "26.1") (msgu "0.1.0") (s "1.12.0") (list-utils "0.4.6"))
 ;; Keywords: maint
 
 ;; This file is not part of GNU Emacs.
@@ -32,6 +32,11 @@
 ;;
 
 ;;; Code:
+
+;;
+;;; Compiler pacifier
+
+(declare-function s-blank-str-p "ext:s.el")
 
 ;;
 ;;; OS
@@ -243,6 +248,35 @@ For argument REMOTE, see function `executable-find' description."
   `(if (zerop (length ,seq))
        (push ,newelt ,seq)
      (list-utils-insert-after-pos ,seq (max (1- (length ,seq)) 0) ,newelt)))
+
+;;
+;;; I/O
+
+;;;###autoload
+(defun elenv-file-contents (filename)
+  "Return FILENAME's contents."
+  (if (file-exists-p filename)
+      (with-temp-buffer (insert-file-contents filename) (buffer-string))
+    ""))
+
+;;;###autoload
+(defun elenv-shell-execute (cmd &rest args)
+  "Return non-nil if CMD executed succesfully with ARGS."
+  (save-window-excursion
+    (msgu-silent
+      (= 0 (shell-command
+            (concat cmd " "
+                    (mapconcat #'shell-quote-argument
+                               (cl-remove-if #'s-blank-str-p args)
+                               " ")))))))
+
+;;;###autoload
+(defun elenv-move-path (path dest)
+  "Move PATH to DEST."
+  (ignore-errors (make-directory dest t))
+  (elenv-shell-execute (if elenv-windows "move" "mv")
+                       (unless elenv-windows "-f")
+                       (expand-file-name path) (expand-file-name dest)))
 
 ;;
 ;;; Buffer
