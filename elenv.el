@@ -316,6 +316,14 @@ Optional argument REP is the replacement string of non-displayable character."
         (string-join (reverse results)))
     ""))
 
+;;;###autoload
+(defun elenv-choose-char (&rest args)
+  "Choose a character from the list ARGS."
+  (cl-some (lambda (ch)
+             (when (elenv-char-displayable-p ch)
+               ch))
+           args))
+
 ;;
 ;;; String
 
