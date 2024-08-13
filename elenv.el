@@ -292,6 +292,31 @@ For argument REMOTE, see function `executable-find' description."
   (or (buffer-file-name buf) (buffer-name buf)))
 
 ;;
+;;; Character
+
+;;;###autoload
+(defun elenv-char-displayable-p (ch)
+  "Same as function `char-displayable-p' but accept CH as string."
+  (cond ((stringp ch) (char-displayable-p (string-to-char ch)))
+        (t            (char-displayable-p ch))))
+
+;;;###autoload
+(defun elenv-replace-nondisplayable (str &optional rep)
+  "Replace non-displayable character from STR.
+
+Optional argument REP is the replacement string of non-displayable character."
+  (if (stringp str)
+      (let ((rep (or rep ""))
+            (results (list)))
+        (dolist (string (split-string str ""))
+          (let ((string (if (elenv-char-displayable-p string)
+                            string
+                          rep)))
+            (push string results)))
+        (string-join (reverse results)))
+    ""))
+
+;;
 ;;; String
 
 ;;;###autoload
