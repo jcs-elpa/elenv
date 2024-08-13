@@ -14,6 +14,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * Revise macro `elenv-[if/when/unless]-env` (27173a2e2f6b8a7c3fdc817b2fcbe625174e3ac9)
 * Revise macro `elenv-[if/when/unless]-exec` (27173a2e2f6b8a7c3fdc817b2fcbe625174e3ac9)
 * fix: Make remote into another variable (2577f6ea22b27c0959d8d2dec6fa159b5b76b9f3)
+* feat: Add `character` section (4b33acd0e511be9c12673bb9a7e61d73ef5f61e1)
 
 ## 0.1.0
 > Released Oct 14, 2022
