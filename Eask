@@ -1,3 +1,5 @@
+;; -*- mode: eask; lexical-binding: t -*-
+
 (package "elenv"
          "0.1.0"
          "Environment variable management")
