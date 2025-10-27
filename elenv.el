@@ -230,6 +230,36 @@ For argument REMOTE, see function `executable-find' description."
      ,@body))
 
 ;;
+;;; Type
+
+;;;###autoload
+(defun elenv-types (obj)
+  "Return a list of symbol representing the type of OBJ."
+  (delete-dups
+   (cl-remove-if #'null
+                 (list (and (integerp obj) 'integer)
+                       (and (integerp obj) 'integer)
+                       (and (floatp obj) 'float)
+                       (and (numberp obj) 'number)
+                       (and (consp obj) 'cons)
+                       (and (characterp obj) 'character)
+                       (and (stringp obj) 'string)
+                       (and (listp obj) 'list)
+                       (and (vectorp obj) 'vector)
+                       (and (char-table-p obj) 'char-table)
+                       (and (hash-table-p obj) 'hash-table)
+                       (and (recordp obj) 'record)
+                       (and (functionp obj) 'function)
+                       (and (macrop obj) 'macro)
+                       (and (symbolp obj) 'symbol)
+                       (type-of obj)))))
+
+;;;###autoload
+(defun elenv-type-of (obj)
+  "Return a symbol representing the type of OBJ."
+  (car (elenv-types obj)))
+
+;;
 ;;; Color
 
 (defun elenv-light-color-p (hex-code)
