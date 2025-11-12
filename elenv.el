@@ -279,6 +279,19 @@ For argument REMOTE, see function `executable-find' description."
        (push ,newelt ,seq)
      (list-utils-insert-after-pos ,seq (max (1- (length ,seq)) 0) ,newelt)))
 
+;;;###autoload
+(defmacro elenv-uappend (place new-items)
+  "Like the function `'append`' but destructive, preserving order
+and avoiding duplicates."
+  (declare (indent 1))
+  `(cl-callf
+       (lambda (old)
+         (dolist (x ,new-items old)
+           (unless (memq x old)
+             (setq old (nconc old (list x)))))
+         old)
+       ,place))
+
 ;;
 ;;; I/O
 
