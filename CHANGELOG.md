@@ -5,8 +5,13 @@ All notable changes to this project will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 
-## 0.1.1 (Unreleased)
+## 0.2.1 (Unreleased)
 > Released N/A
+
+* N/A
+
+## 0.2.0
+> Released Feb 04, 2026
 
 * Add is graphic flag ([`916ad39`](../../commit/916ad3998be7861dfd873bf2367d6804d82792e7))
 * Add new macro `elenv-with-env` ([`42571a6`](../../commit/42571a6e4860b9ea27136e60019487d173ed7fb9))
@@ -16,6 +21,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 * fix: Make remote into another variable ([`2577f6e`](../../commit/2577f6ea22b27c0959d8d2dec6fa159b5b76b9f3))
 * feat: Add `character` section ([`4b33acd`](../../commit/4b33acd0e511be9c12673bb9a7e61d73ef5f61e1))
 * feat: Add types ([`1193dfa`](../../commit/1193dfab0639c872a006b10091c0b0b86bf6595a))
+* feat: Add a variable for home dir ([`620af38`](../../commit/620af387e3c076ec02d8a4ebfdb26f1d46798e81))
 
 ## 0.1.0
 > Released Oct 14, 2022
