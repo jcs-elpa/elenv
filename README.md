@@ -13,8 +13,8 @@ The package name `elenv' stands for Emacs Lisp environment.
 **Table of Contents**
 
 - [elenv](#elenv)
-  - [🔨 Usage](#🔨-usage)
-    - [🖥️ Operating System](#🖥️-operating-system)
+  - [🔨 Usage](#-usage)
+    - [🖥️ Operating System](#-operating-system)
       - [[v] elenv-windows](#v-elenv-windows)
       - [[v] elenv-darwin](#v-elenv-darwin)
       - [[v] elenv-macos](#v-elenv-macos)
@@ -28,21 +28,22 @@ The package name `elenv' stands for Emacs Lisp environment.
       - [[m] elenv-with-linux](#m-elenv-with-linux)
       - [[m] elenv-with-bsd](#m-elenv-with-bsd)
       - [[m] elenv-with-unix](#m-elenv-with-unix)
-    - [⛓️ Environment](#⛓️-environment)
+    - [⛓️ Environment](#-environment)
+      - [[v] elenv-user-home-dir](#v-elenv-user-home-dir)
       - [[m] elenv-if-env](#m-elenv-if-env)
       - [[m] elenv-when-env](#m-elenv-when-env)
       - [[m] elenv-unless-env](#m-elenv-unless-env)
-    - [⚙️ Executable](#⚙️-executable)
+    - [⚙️ Executable](#-executable)
       - [[m] elenv-if-exec](#m-elenv-if-exec)
       - [[m] elenv-when-exec](#m-elenv-when-exec)
       - [[m] elenv-unless-exec](#m-elenv-unless-exec)
-    - [🖼️ Graphic](#🖼️-graphic)
+    - [🖼️ Graphic](#-graphic)
       - [[v] elenv-graphic-p](#v-elenv-graphic-p)
-    - [🔍 Debugging](#🔍-debugging)
+    - [🔍 Debugging](#-debugging)
       - [[f] elenv-debugging-p](#f-elenv-debugging-p)
-  - [🛠️ Contribute](#🛠️-contribute)
-    - [🔬 Development](#🔬-development)
-  - [⚜️ License](#⚜️-license)
+  - [🛠️ Contribute](#-contribute)
+    - [🔬 Development](#-development)
+  - [⚜️ License](#-license)
 
 <!-- markdown-toc end -->
 
@@ -131,6 +132,12 @@ The package name `elenv' stands for Emacs Lisp environment.
 
 ### ⛓️ Environment
 
+#### [v] elenv-user-home-dir
+
+```elisp
+(concat elenv-user-home-dir ".emacs")  ; ~/.emacs
+```
+
 #### [m] elenv-if-env
 
 ```elisp
@@ -156,7 +163,7 @@ The package name `elenv' stands for Emacs Lisp environment.
 #### [m] elenv-if-exec
 
 ```elisp
-(elenv-if-exec "node" nil 
+(elenv-if-exec "node" nil
                 ...  ; do stuff if PROGRAM exists; expose it as `value'.
   ...                ; else we execute the ELSE block
 ```

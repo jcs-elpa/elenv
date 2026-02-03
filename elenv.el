@@ -109,6 +109,10 @@
 ;;; Environment
 
 ;;;###autoload
+(defconst elenv-user-home-dir (expand-file-name "~/")
+  "Store user's home directory.")
+
+;;;###autoload
 (defmacro elenv-if-env (variable then &rest else)
   "Evaluate THEN if VARIABLE is valid, we execute ELSE if not valid."
   (declare (indent 1))
