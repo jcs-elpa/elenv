@@ -33,6 +33,10 @@
 
 ;;; Code:
 
+(eval-when-compile
+  (require 'msgu)
+  (require 'list-utils))
+
 ;;
 ;;; Compiler pacifier
 
@@ -42,7 +46,7 @@
 ;;; OS
 
 ;;;###autoload
-(defconst elenv-windows (memq system-type '(cygwin windows-nt ms-dos))
+(defconst elenv-windows (memq system-type '( cygwin windows-nt ms-dos))
   "The operating system is Microsoft Windows compatible.")
 
 ;;;###autoload
@@ -62,7 +66,7 @@
   "The operating system is BSD compatible.")
 
 ;;;###autoload
-(defconst elenv-unix (memq system-type '(aix berkeley-unix hpux usg-unix-v))
+(defconst elenv-unix (memq system-type '( aix berkeley-unix hpux usg-unix-v))
   "The operating system is Unix compatible.")
 
 ;;;###autoload
